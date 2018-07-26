@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			#dom{width:100px;height:auto;display:block;}
+		</style>
+	</head>
+	<body>
+		<img id="dom" src="" alt="" />
+		<input type="file" onchange="filedate(this)" />
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			function filedate(obj){
+				var file = $(obj)[0].files[0] || $(obj)[0].files;
+				var reader = new FileReader();
+				var img = document.getElementById('dom');
+				/*$.ajax({
+					type:"post",
+					url:"",
+					success:function (data){
+						
+					}
+					
+				});*/
+	              reader.onload = function(evt){img.src = evt.target.result;}
+	              reader.readAsDataURL(file);
+			}
+		</script>
+	</body>
+</html>

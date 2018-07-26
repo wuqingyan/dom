@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" onkeyup="dom(this.value)" placeholder="全部品牌" />
+		<div class="list">
+			
+		</div>
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script type="text/javascript">
+			function dom(val){
+				var list=["奥迪aaa","ba","cab","ddb","A","奥迪aaab","ba","cabb","ddbd","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A","奥迪aaab","ba","cabb","ddbd","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A","奥迪aaab","ba","cabb","ddbd","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A","奥迪aaab","ba","cabb","ddbd","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A","奥迪aaab","ba","cabb","ddbd","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A","奥迪aaab","ba","cabb","ddbd","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A","奥迪aaa","ba","cab","ddb","A"];
+				var arr=[];
+				console.log(val);
+				var result=val.replace(/(^\s+)|(\s+$)/g,"");//去掉前后空格
+				for(var i=0;i<list.length;i++){
+					if(list[i].toUpperCase().indexOf(result.replace(/\s/g,"").toUpperCase())>=0){//去掉中间空格,转换字母为大写
+						arr.push(list[i]);
+					}
+				}
+				console.log(arr)
+				$(".list").html(arr);
+			}
+			
+		</script>
+	</body>
+</html>

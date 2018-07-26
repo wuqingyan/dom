@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		 <input type="text" oninput="this.value= this.value.match(/\d+(\.\d{0,1})?/) ? this.value.match(/\d+(\.\d{0,1})?/)[0] : ''"
+           onpropertychange="this.value= this.value.match(/\d+(\.\d{0,1})?/) ? this.value.match(/\d+(\.\d{0,1})?/)[0] : ''">
+		<script type="text/javascript">
+			
+		 function dom(obj,min,max) {
+			if(/[\d\.]/.test(obj.value)){//禁止输入汉字
+				obj.value = min;
+			}
+			if(obj.value.charAt(obj.value.length-1)=='.'){
+		           obj.value = obj.value.substr(0,obj.value.length);
+		           if (obj.value == "") {
+						obj.value = min;
+						return 
+					}
+					if (!/^[0-9]+([.][0-9]{1}){0,1}$/.test(obj.value)) {//保留一位小数
+						obj.value = '';
+					}
+					if (obj.value > max) {
+						obj.value = max;
+					}
+					if (obj.value < min) {
+						obj.value = min;
+					}
+					if(obj.value.split('.')-1>1){//判断
+						obj.value = min;
+					}
+			}else{
+				if (obj.value == "") {
+						obj.value = min;
+						return
+					}
+					if (!/^[0-9]+([.][0-9]{1}){0,1}$/.test(obj.value)) {
+						obj.value = '';
+					}
+					if (obj.value > max) {
+						obj.value = max;
+					}
+					if (obj.value < min) {
+						obj.value = min;
+					}
+					if(obj.value.split('.').length-1>1){//判断
+						obj.value = min;
+					}
+			}
+		    
+		};
+		</script>
+	</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			.fl{float:left;}
+			.fix{zoom:1;}
+			.fix:after{clear:both;content:" ";display:block;font-size:0;height:0;visibility:hidden;}
+			.starscore_list li{line-height:34px;height:34px;}
+
+.star-block{width:220px;}
+.star-block p{
+    padding-left:20px;
+    margin: 0 !important;;
+    height:auto!important;
+}
+.star_score {
+    background:url(off.png) repeat-x;
+    width:90px;
+    height:18px;
+    position:relative;
+    margin-top:8px;
+}
+.star_score a{
+    height:18px;
+    display:block;
+    text-indent:-999em;
+    position:absolute;
+    left:0;
+}
+.star_score a:hover{
+    background:url(on.png);
+    left:0;
+}
+.star_score a.clibg{
+    background:url(on.png);
+    left:0;
+}
+.starscore_list li:last-child{height:auto;}
+.starscore_list li textarea{
+    width:428px;
+    height:64px;
+    border:1px solid #e8e8e8;
+    margin:0;
+    padding:10px;
+    margin-top:10px;
+}
+
+		</style>
+	</head>
+	<body>
+		<div id="star"></div>
+		<div id="result"></div>
+		<div id="html">
+			<input class="h1" type="text" />
+			<input class="h2" type="text" />
+			<input class="h3" type="text" />
+			<input class="h4" type="text" />
+
+		</div>
+		<button id="sj">随机</button>
+		<ul class="starscore_list">
+		<li class="fix">
+			<div class="fl">产品质量：</div>
+			<div class="fl">
+				<div id="qualityScore"  class="star-block fix" >
+				  <div class="star_score fl"></div>
+				  <p class="fl"><span class="score">0</span>分</p>
+				  <div class="attitude"></div>
+				</div>
+			</div>
+		</li>
+		<li class="fix">
+			<div class="fl">配送时效：</div>
+			<div class="fl">
+				<div id="deliveryScore"  class="star-block fix" >
+				  <div class="star_score fl"></div>
+				  <p class="fl"><span class="score">0</span>分</p>
+				  <div class="attitude"></div>
+				</div>
+			</div>
+		</li>
+		<li class="fix">
+			<div class="fl">服务质量：</div>
+			<div class="fl">
+				<div id="serviceScore"  class="star-block fix" >
+				  <div class="star_score fl"></div>
+				  <p class="fl"><span class="score">5</span>分</p>
+				  <div class="attitude"></div>
+				</div>
+			</div>
+		</li>
+		<li style="position:relative">
+		<textarea name="appraiseContent" style="resize:none"   placeholder='写写你购买商品的感受吧~' id="appraiseContent" maxlength="200" ></textarea><span style="position:absolute;right:13px;bottom:3px;font-size:12px;height:20px;line-height:20px;"><span id='text-count'>200</span>/200</span>
+		</li>
+      </ul>
+		
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script type="text/javascript" src="jquery.raty.min.js"></script>
+		<script type="text/javascript" src="starScore.js"></script>
+		<script type="text/javascript">
+			scoreFun($("#qualityScore"));//初始化
+			scoreFun($("#deliveryScore"));
+			scoreFun($("#serviceScore"));
+			$("#qualityScore").find("a").removeClass("clibg");
+			$("#qualityScore").find("a").eq(9).addClass("clibg");
+			$("#deliveryScore").find("a").removeClass("clibg");
+			$("#deliveryScore").find("a").eq(9).addClass("clibg");
+			$("#serviceScore").find("a").removeClass("clibg");
+			$("#serviceScore").find("a").eq(9).addClass("clibg");
+			$(".starscore_list").find(".score").text("5");
+			
+			
+			
+			
+			$(function(){
+				$('#star').raty({
+					number: 5,//星数
+					score: 3.7,//默认星
+			  		half     : true,//半星
+			  		size     : 24,
+//			  		readOnly: true,//禁用
+					hints:["1分","2分","3分","4分","5分"],
+			  		starHalf : 'half.png',
+			  		starOff  : 'off.png',
+			  		starOn   : 'on.png',
+			  		click:function(score,evt){
+			  			/*var a=$("#result").html();
+			  			if($("#result").text()!=a){
+			  				alert($("#result").text())
+			  			}*/
+			  			$("#result").html("您的评分为"+score+"分");
+			  			console.log(evt,"您的评分为"+score+"分")
+			  		}
+				});
+				$("#sj").on("click",function(){
+					$("#html .h1").val(Math.random());//0.0 ~ 1.0 之间的一个伪随机数。【包含0不包含1】
+					$("#html .h2").val(Math.ceil(0.2));  //向上取整。取1-10
+					$("#html .h3").val(Math.floor(0.9));  //向下取整。取0-9
+					$("#html .h4").val(Math.round(1.4));  //四舍五入。取1
+				})
+				var a = { n : 1};  
+				var b = a;  //b={n:1}
+			    //语句从左到右执行，赋值从右到左。
+			    //执行a.x时，a还是指向的是{n:1}的空间。
+			    //赋值a时，a指针指向了{n:2},a.x中a原来指向的空间{n:1}添加x属性，指向现在a指向的空间{n:2};
+			    a.x = a = {n:  2};  //{n:1}.x={n:1}={n:2}
+			    console.log(a.x);      //undefined
+			    console.log(b.x);     //{n:2} 
+			})
+		</script>
+	</body>
+</html>

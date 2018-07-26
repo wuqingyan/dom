@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			input {
+			  caret-color: auto;
+			  display: block;
+			  margin-bottom: .5em;
+			}
+			
+			input.custom {
+			  caret-color:pink;
+			  color:green;
+			}
+			
+			.radio-beauty-container {
+			  font-size: 0;
+			}
+			.radio-beauty-container .radio-beauty:hover, .radio-beauty-container input[type="radio"]:checked + .radio-beauty {
+			  padding: 2px;
+			  background-color: green;
+			  background-clip: content-box;
+			}
+			.radio-beauty-container .radio-name {
+			  vertical-align: middle;
+			  font-size: 16px;
+			}
+			.radio-beauty-container .radio-beauty {
+			  width: 18px;
+			  height: 18px;
+			  box-sizing: border-box;
+			  display: inline-block;
+			  border: 1px solid green;
+			  vertical-align: middle;
+			  margin: 0 15px 0 3px;
+			  border-radius: 50%;
+			}
+			.radio-beauty-container .radio-beauty:hover {
+			  box-shadow: 0 0 15px blue;
+			}
+		</style>
+	</head>
+	<body>
+		<p style="width:100%;text-align-last:justify;">两端对齐</p>
+		<p style="width:100%;text-align:justify;">两端对齐<span style="display:inline-block;width:100%;height:0;"></span></p>
+		<input value="This field uses a default caret." />
+<input class="custom" value="I have a custom caret color!" />
+<div class="radio-beauty-container">
+    <label>
+        <span class="radio-name">前端工程师</span>
+        <input type="radio" name="radioName" id="radioName1" hidden="hidden">
+        <label for="radioName1" class="radio-beauty"></label>
+    </label>
+    <label>
+        <span class="radio-name">后端工程师</span>
+        <input type="radio" name="radioName" id="radioName2" hidden="">
+        <label for="radioName2" class="radio-beauty"></label>
+    </label>
+    <label>
+        <span class="radio-name">全栈工程师</span>
+        <input type="radio" name="radioName" id="radioName3" hidden="">
+        <label for="radioName3" class="radio-beauty"></label>
+    </label>
+</div>
+	</body>
+</html>
