@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='UTF-8' />
+        <title></title>
+        <style type='text/css'>
+            
+        </style>
+    </head>
+    <body>
+        <input class="keyword" type="serch" placeholder="请输入项目名称或地址">
+        <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+$(".keyword").on('keypress',function(e) {  
+                if(e.keyCode=='13') {  
+                    e.preventDefault();  
+                    e.stopPropagation();
+                    document.activeElement.blur();//关闭虚拟键盘
+                    //请求搜索接口  
+                      
+                }  
+         });
+</script>
+  
+
+    </body>
+</html>

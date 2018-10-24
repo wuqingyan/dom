@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="animate.css"/>
+		<style type="text/css">
+			#dom{font-size:32px;position:absolute;top:300px;left:440px;}
+		</style>
+	</head>
+	<body>
+		<div id="dom">animate</div>
+		<button class="but">bounce</button>
+		<button class="but">flash</button>
+		<button class="but">pulse</button>
+		<button class="but">rubberBand</button>
+		<button class="but">shake</button>
+		<button class="but">headShake</button>
+		<button class="but">swing</button>
+		<button class="but">tada</button>
+		<button class="but">wobble</button>
+		<button class="but">jello</button>
+		<button class="but">bounceIn</button>
+		<button class="but">bounceInDown</button>
+		<button class="but">bounceInLeft</button>
+		<button class="but">bounceInRight</button>
+		<button class="but">bounceInUp</button>
+		<button class="but">bounceOut</button>
+		<button class="but">bounceOutDown</button>
+		<button class="but">bounceOutLeft</button>
+		<button class="but">bounceOutRight</button>
+		<button class="but">bounceOutUp</button>
+		<button class="but">fadeIn</button>
+		<button class="but">fadeInDown</button>
+		<button class="but">fadeInDownBig</button>
+		<button class="but">fadeInLeft</button>
+		<button class="but">fadeInLeftBig</button>
+		<button class="but">fadeInRight</button>
+		<button class="but">fadeInRightBig</button>
+		<button class="but">fadeInUp</button>
+		<button class="but">fadeInUpBig</button>
+		<button class="but">fadeOut</button>
+		<button class="but">fadeOutDown</button>
+		<button class="but">fadeOutDownBig</button>
+		<button class="but">fadeOutLeft</button>
+		<button class="but">fadeOutLeftBig</button>
+		<button class="but">fadeOutRight</button>
+		<button class="but">fadeOutRightBig</button>
+		<button class="but">fadeOutUp</button>
+		<button class="but">fadeOutUpBig</button>
+		<button class="but">flip</button>
+		<button class="but">flipInX</button>
+		<button class="but">flipInY</button>
+		<button class="but">flipOutX</button>
+		<button class="but">flipOutY</button>
+		<button class="but">lightSpeedIn</button>
+		<button class="but">lightSpeedOut</button>
+		<button class="but">rotateIn</button>
+		<button class="but">rotateInDownLeft</button>
+		<button class="but">rotateInDownRight</button>
+		<button class="but">rotateInUpLeft</button>
+		<button class="but">rotateInUpRight</button>
+		<button class="but">rotateOut</button>
+		<button class="but">rotateOutDownLeft</button>
+		<button class="but">rotateOutDownRight</button>
+		<button class="but">rotateOutUpLeft</button>
+		<button class="but">rotateOutUpRight</button>
+		<button class="but">hinge</button>
+		<button class="but">jackInTheBox</button>
+		<button class="but">rollIn</button>
+		<button class="but">rollOut</button>
+		<button class="but">zoomIn</button>
+		<button class="but">zoomInDown</button>
+		<button class="but">zoomInLeft</button>
+		<button class="but">zoomInRight</button>
+		<button class="but">zoomInUp</button>
+		<button class="but">zoomOut</button>
+		<button class="but">zoomOutDown</button>
+		<button class="but">zoomOutLeft</button>
+		<button class="but">zoomOutRight</button>
+		<button class="but">zoomOutUp</button>
+		<button class="but">slideInDown</button>
+		<button class="but">slideInLeft</button>
+		<button class="but">slideInRight</button>
+		<button class="but">slideInUp</button>
+		<button class="but">slideOutDown</button>
+		<button class="but">slideOutLeft</button>
+		<button class="but">slideOutRight</button>
+		<button class="but">slideOutUp</button>
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".but").on("click",function(){
+					$("#dom").removeClass();
+					$("#dom").addClass($(this).html()+" animated infinite");
+				})
+			})
+		</script>
+	</body>
+</html>

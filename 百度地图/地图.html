@@ -1,0 +1,102 @@
+<!DOCTYPE html>  
+<html>
+<head>  
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+<title>Hello, World</title>  
+<style type="text/css">  
+html{height:100%}  
+body{height:100%;margin:0px;padding:0px}  
+#container{height:100%}  
+</style>  
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=NlXPNGwyI1gozsuF7HlNFxpp0Ki5yss5">
+//v2.0版本的引用方式：src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"
+</script>
+</head>  
+ 
+<body>  
+<div id="container"></div> 
+<!--https://www.cnblogs.com/zqzjs/p/5293698.html-->
+<script type="text/javascript"> 
+var map = new BMap.Map("container");//创建Map实例
+//var map = new BMap.Map("container", {enableMapClick:false});//构造底图时，关闭底图可点功能 
+//var map = new BMap.Map("container",{minZoom:7,maxZoom:8}); // 创建Map实例,设置地图允许的最小/大级别
+ 
+//当然也可以动态设置级别：
+/*map.setMaxZoom(8);
+map.setMinZoom(7);*/
+var point = new BMap.Point(116.307629,40.058359);//创建地图坐标
+// 设置中心点坐标  （当然也可以根据城市名称设置地图的中心点)
+//map.centerAndZoom(point, 12);
+map.centerAndZoom("新安县", 12);
+
+// 初始化地图，跳转到指定坐标
+/*window.setTimeout(function(){  
+    map.panTo(new BMap.Point(116, 39));    //跳到指定坐标
+}, 2000);*/
+var marker = new BMap.Marker(point);// 创建标注    
+map.addOverlay(marker);// 将标注添加到地图中
+marker.setAnimation(BMAP_ANIMATION_BOUNCE);//跳动动画
+marker.enableDragging();  //设置点可以拖拽
+
+
+map.enableScrollWheelZoom(true); //启用滚轮放大缩小，默认禁用
+map.addControl(new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type: BMAP_NAVIGATION_CONTROL_PAN}));    //左上放大缩小
+map.addControl(new BMap.ScaleControl());    //左下计算距离
+map.addControl(new BMap.OverviewMapControl()); //右下角小地图   
+map.addControl(new BMap.MapTypeControl());    //右上角卫星图
+map.enableInertialDragging(true);//启用地图惯性拖拽，默认禁用
+
+
+map.addEventListener("click",function(e){
+	var point = new BMap.Point(e.point.lng,e.point.lat);//动态获取点击X,Y坐标
+	map.centerAndZoom(point, 12);//设置坐标及缩放级别
+	var marker = new BMap.Marker(point);
+	map.addOverlay(marker);// 将标注添加到地图中
+	marker.enableDragging();//设置点可以拖拽
+	marker.setAnimation(BMAP_ANIMATION_BOUNCE);//跳动动画
+	alert(e.point.lng + ", " + e.point.lat);
+	marker.addEventListener("click", function(e){
+		e.domEvent.stopPropagation();//阻止冒泡
+		
+        var myGeo = new BMap.Geocoder();      // 创建地址解析器实例   
+        myGeo.getLocation(new BMap.Point(e.point.lng,e.point.lat),function(result){if(result){
+        	alert(result.address);//返回地址信息
+        	
+        	
+        			var opts = {    
+					 width : 450,     // 信息窗口宽度    
+					 height: 100,     // 信息窗口高度    
+					 title : result.address,  // 信息窗口标题   
+					 enableMessage:true,//设置允许信息窗发送短息
+			  		 message:"亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
+					}   
+					var sContent =
+    "<h4 style='margin:0 0 5px 0;padding:0.2em 0'>天安门</h4>" + 
+    "<img style='float:right;margin:4px' id='imgDemo' src='http://app.baidu.com/map/images/tiananmen.jpg' width='139' height='104' title='天安门'/>" + 
+    "<p style='margin:0;line-height:1.5;font-size:13px;text-indent:2em'>天安门坐落在中国北京市中心,故宫的南侧,与天安门广场隔长安街相望,是清朝皇城的大门...</p>" + 
+    "</div>";
+					var infoWindow = new BMap.InfoWindow(sContent, opts);  // 创建信息窗口对象    
+					map.openInfoWindow(infoWindow, map.getCenter());      // 打开信息窗口
+					map.addOverlay(marker);              // 将标注添加到地图中
+			        map.openInfoWindow(infoWindow,point); //开启信息窗口
+        }});
+        
+        
+	 	alert("您点击了标注");
+	});
+	
+    //创建右键菜单
+	var removeMarker = function(e,ee,marker){
+        map.removeOverlay(marker);
+    }
+    var markerMenu = new BMap.ContextMenu();
+    markerMenu.addItem(new BMap.MenuItem('删除',removeMarker.bind(marker)));
+    marker.addContextMenu(markerMenu);
+})
+
+map.setCurrentCity("新安县"); // 仅当设置城市信息时，MapTypeControl的切换功能才能可用   
+map.setDefaultCursor("url('bird.cur')")
+</script>  
+</body>  	
+</html>

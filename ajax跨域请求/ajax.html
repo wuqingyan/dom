@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<button class="act">点击</div>
+	<body>
+		<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript">
+				// $.ajax({
+				// 	type:"get",    //请求方式
+				// 	async:true,    //是否异步
+				// 	url:"http://www.domain.net/url",
+				// 	dataType:"jsonp",    //跨域json请求一定是jsonp
+				// 	jsonp: "callbackparam",    //跨域请求的参数名，默认是callback
+				// 		//jsonpCallback:"successCallback",    //自定义跨域参数值，回调函数名也是一样，默认为jQuery自动生成的字符串
+				// 	data:{"query":"civilnews"},    //请求参数
+
+				// 	beforeSend: function() {
+				// 		//请求前的处理
+				// 	},
+
+				// 	success: function(data) {
+				// 		//请求成功处理，和本地回调完全一样
+				// 	},
+
+				// 	complete: function() {
+				// 		//请求完成的处理
+				// 	},
+
+				// 	error: function() {
+				// 		//请求出错处理
+				// 	}
+				// });
+			$(function(){
+				$(".act").on("click",function(){
+					$.ajax({
+						type:"get",	//get、post
+						dataType:"jsonp",//跨域json请求一定是jsonp
+						url: "http://www.wanandroid.com/tools/mockapi/11918/1",//请求地址
+						jsonp: "callback",//跨域请求的参数名，默认是callback
+						jsonpCallback: "callback",//自定义跨域参数值，回调函数名也是一样，默认为jQuery自动生成的字符串
+						success: function(data){
+							var result = JSON.stringify(data);//请求成功需要转化为JSON
+							console.log(result)
+					  },
+					  error:function(){
+
+					  }
+         			});
+				})
+			});
+		</script>
+	</body>
+</html>

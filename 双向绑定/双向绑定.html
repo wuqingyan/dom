@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>forvue</title>
+</head>
+<body>
+  <input type="text" id="textInput">
+  输入：<span id="textSpan"></span>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>
+    var obj = {},
+        textInput = $("#textInput"),
+        textSpan = $('#textSpan');
+
+    Object.defineProperty(obj, 'foo', {
+      set: function (newValue) {
+        textInput.val(newValue);
+        textSpan.html(newValue);
+      }
+    });
+
+    textInput.keyup(function (e) {
+        obj.foo = e.target.value;
+    });
+
+  </script>
+</body>
+</html>

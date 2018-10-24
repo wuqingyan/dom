@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <meta>
+        <title></title>
+    </head>
+    <body>
+        <script>
+            function Recursion(depth) {
+                console.log('抱着');
+                console.log(depth);
+                if (!depth) {
+                    console.log('我的小鲤鱼');
+                    console.log(depth);
+                } else {
+                    Recursion(--depth);  // 递归调用
+                    console.log(depth);
+                }
+                console.log('的我');
+            }
+
+            console.log('吓得我抱起了');
+            Recursion(2)
+        </script>
+    </body>
+</html>

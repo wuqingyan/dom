@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+	</head>
+	<body>	
+		<script type="text/javascript">
+			function Word(words){
+	            this.words = words;
+	        }
+	        Word.prototype = {
+	            alert(){
+	                alert(this.words);
+	            }
+	        }
+	        //创建实例
+	        var w = new Word("hello world");
+	        w.print = function(){
+	            console.log(this.words);
+	            console.log(w);	
+	            console.log(this);  //Person对象
+	        }
+	       w.print();  //hello world
+	       w.alert();  //hello world
+		</script>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE ht<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>进度条2</title>
+    <style type="text/css">   
+        .loading{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 100;
+            background: #ffffff;
+        }
+        .loading .pic{
+            width: 64px;
+            height: 64px;
+            border: 1px solid red;
+            /*剧中显示*/
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+//        页面加载状态改变时的事件
+       document.onreadystatechange = function () {
+           if(document.readyState == 'complete'){   //判断页面加载完成，加载的图标就隐藏
+               $(".loading").fadeOut();
+           }
+       }
+    </script>
+</head>
+<body>
+    <div class="loading">
+        <div class="pic">加载中</div>  
+    </div>
+    <img src="http://pic29.nipic.com/20130514/12477194_083818249176_2.jpg" alt="">
+    <img src="http://pic37.nipic.com/20140115/9448607_120900609000_2.jpg" alt="">
+    <img src="http://pic.58pic.com/58pic/11/15/53/43g58PICz9B.jpg" alt="">
+    <img src="http://pic3.nipic.com/20090519/2390580_090051082_2.jpg" alt="">
+    <img src="http://pic25.nipic.com/20121127/9026859_131523397124_2.jpg" alt="">
+    <img src="http://pic29.nipic.com/20130514/12477194_083818249176_2.jpg" alt="">
+</body>
+</html>

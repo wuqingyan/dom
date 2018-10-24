@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.element{position: absolute;top:10px;left:0;}
+		</style>
+	</head>
+	<body>
+		<div class="element">312312</div>
+		<script src="jquery.js"></script>
+		<script type="text/javascript" src="velocity.min.js"></script>
+		<script>
+			// 标准写法
+			// (为了简洁，后面的示例代码中 将直接使用 $element 来代替 jQuery 选择器)
+			$(".element").velocity({
+				left: "200px"
+			}, {
+				duration: 450,
+				delay: 1000
+			});
+
+			// $.animate() 的写法，效果同上
+			$(".element").delay(1000).velocity({left: "200px"}, 450);
+
+
+
+
+		// 	$element.velocity({
+		// 	width: "500px",        // 动画属性 宽度到 "500px" 的动画
+		// 	property2: value2      // 属性示例
+		// }, {
+		// 	/* Velocity 动画配置项的默认值 */
+		// 	duration: 400,         // 动画执行时间
+		// 	easing: "swing",       // 缓动效果
+		// 	queue: "",             // 队列
+		// 	begin: undefined,      // 动画开始时的回调函数
+		// 	progress: undefined,   // 动画执行中的回调函数（该函数会随着动画执行被不断触发）
+		// 	complete: undefined,   // 动画结束时的回调函数
+		// 	display: undefined,    // 动画结束时设置元素的 css display 属性
+		// 	visibility: undefined, // 动画结束时设置元素的 css visibility 属性
+		// 	loop: false,           // 循环
+		// 	delay: false,          // 延迟
+		// 	mobileHA: true         // 移动端硬件加速（默认开启）
+		// });
+		</script>
+	</body>
+</html>
